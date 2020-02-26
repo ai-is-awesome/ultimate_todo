@@ -12,26 +12,27 @@ from django.urls import reverse
 
 
 def index(request):
+	context = {}
 	if request.method == 'POST':
 		form = TaskForm(request.POST)
+
 		if form.is_valid():
 			form.save()
-
+		else:
+			context["invalid_form"] = True
 		return redirect(reverse('index'))
 
 	else:
-		tasks = Task.objects.all()
-		form = TaskForm()
+		context["not_post"] = True
 
-
-	form = TaskForm()
 	tasks = Task.objects.all()
+	form = TaskForm()
 
-	context = {
-		"tasks" : tasks, 
-		"form" : form, 
 
-			}
+
+
+	context["tasks"] = tasks
+	context["form"] = form
 
 
 
@@ -54,7 +55,9 @@ def update(request):
 
 def delete_task(request, pk):
 	task = Task.objects.get(id = pk)
-	pass
+	task.delete()
+
+	return redirect(reverse('index'))
 
 
 
