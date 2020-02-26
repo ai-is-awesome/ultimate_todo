@@ -10,7 +10,7 @@ Welcome to update page
 </h1>
 
 
-<form>
+<form action = "{% url 'index' %}" method = "POST">
 
 
 	{% csrf_token %}
