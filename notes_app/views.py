@@ -47,9 +47,16 @@ def index(request):
 
 
 
-def update(request):
+def update(request, pk):
+	context = {}
+	task = Task.objects.get(id = pk)
+	form = TaskForm(instance = task)
 
-	return render(request, 'notes_app/task_update.html')
+	context["task"] = task
+	context["form"] = form
+
+
+	return render(request, 'notes_app/task_update.html', context)
 
 
 
@@ -58,10 +65,6 @@ def delete_task(request, pk):
 	task.delete()
 
 	return redirect(reverse('index'))
-
-
-
-
 
 
 

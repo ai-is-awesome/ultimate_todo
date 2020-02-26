@@ -31,7 +31,7 @@ Not posted: {{ not_post }}
 {% for task in tasks %}
 	<div>
 
-		<p><a href = "{% url 'task_update' %}"><h2>{{ task.title }}</h2></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
 			Last Updated: {{ task.created }}
 		</p><br>
@@ -45,6 +45,9 @@ Not posted: {{ not_post }}
 
 
 {% endblock content %}
+
+
+
 
 
 
