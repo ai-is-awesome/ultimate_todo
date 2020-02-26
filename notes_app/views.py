@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Task
 from .forms import TaskForm
-
+from django.urls import reverse
 
 
 # Create your views here.
@@ -12,16 +12,16 @@ from .forms import TaskForm
 
 
 def index(request):
-	#if request.method == 'POST':
-	#	form = TaskForm(request.POST)
-		# if form.is_valid():
-		# 	form.save()
+	if request.method == 'POST':
+		form = TaskForm(request.POST)
+		if form.is_valid():
+			form.save()
 
-	#	return redirect(request, 'notes_app/index.html')
+		return redirect(reverse('index'))
 
-	# else:
-	# 	tasks = Task.objects.all()
-	# 	form = TaskForm()
+	else:
+		tasks = Task.objects.all()
+		form = TaskForm()
 
 
 	form = TaskForm()
@@ -31,8 +31,7 @@ def index(request):
 		"tasks" : tasks, 
 		"form" : form, 
 
-
-	}
+			}
 
 
 
@@ -43,6 +42,10 @@ def index(request):
 def update(request):
 
 	return render(request, 'notes_app/task_update.html')
+
+
+
+
 
 
 
