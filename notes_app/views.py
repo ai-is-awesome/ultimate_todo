@@ -39,13 +39,22 @@ def index(request):
 
 
 
+
+
+
+
+
+
+
 def update(request):
 
 	return render(request, 'notes_app/task_update.html')
 
 
 
-
+def delete_task(request, pk):
+	task = Task.objects.get(id = pk)
+	pass
 
 
 

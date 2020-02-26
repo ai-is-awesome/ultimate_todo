@@ -14,7 +14,7 @@
 	{% csrf_token %}
 
 
-	{{ form }}
+	{{ form.title }}
 
 <input type = "submit" value = "submit">
 
@@ -27,16 +27,13 @@
 
 
 {% for task in tasks %}
+	<div>
 
-	<a href = "{% url 'task_update' %}"><h2>{{ task.title }}</h2></a>
-	<br>
-	{{ task.body }}
-	<br>
-	Comppleted: {{ task.complete }}
-	<br>
-	Last Updated: {{ task.created }}
-	<br>
-
+		<p><a href = "{% url 'task_update' %}"><h2>{{ task.title }}</h2></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
+			Last Updated: {{ task.created }}
+		</p><br>
+	</div>
 
 
 {% endfor %}
