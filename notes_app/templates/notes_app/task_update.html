@@ -15,7 +15,10 @@ Welcome to update page
 
 	{% csrf_token %}
 
-	{{ form }}
+	{{ form.title }}<br>
+	{{ form.body }}<br>
+	Completed: {{ form.complete }}
+	<br><br>
 
 	<input type = "submit" value = "Update">
 
