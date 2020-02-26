@@ -11,12 +11,12 @@ class Task(models.Model):
 
 	title = models.CharField(max_length = 250)
 
-	body = models.TextField()
+	body = models.TextField(default = "")
 
 	complete = models.BooleanField(default = False)
 
 	created = models.DateTimeField(auto_now_add = True)
-	
+
 
 	def __str__(self):
 
