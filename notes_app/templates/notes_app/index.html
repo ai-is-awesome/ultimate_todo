@@ -1,0 +1,52 @@
+{% extends 'notes_app/base.html' %}
+
+
+{% block content %}
+
+
+<h1>Template Loaded!
+</h1>
+
+
+
+
+<form action = "/" method = "POST">
+	{% csrf_token %}
+
+
+	{{ form }}
+
+<input type = "submit" value = "submit">
+
+
+
+</form>
+
+
+
+
+
+{% for task in tasks %}
+
+	<a href = "{% url 'task_update' %}"><h2>{{ task.title }}</h2></a>
+	<br>
+	{{ task.body }}
+	<br>
+	Comppleted: {{ task.complete }}
+	<br>
+	Last Updated: {{ task.created }}
+	<br>
+
+
+
+{% endfor %}
+
+
+
+
+
+{% endblock content %}
+
+
+
+
