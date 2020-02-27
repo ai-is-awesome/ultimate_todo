@@ -8,10 +8,9 @@
 <h1>Template Loaded!
 </h1>
 
-Invalid form: {{ invalid_form }}<br>
-Not posted: {{ not_post }}
 
 
+<div class = "container">
 <form action = "{% url 'index' %}" method = "POST">
 	{% csrf_token %}
 
@@ -24,27 +23,39 @@ Not posted: {{ not_post }}
 
 </form>
 
-
+</div>
 
 
 
 {% for task in tasks %}
-	<div>
-
-		<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
-			Last Updated: {{ task.created }}
-		</p><br>
+	<div class = "well">
+	<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
+		Last Updated: {{ task.created }}
+	</p><br>
 	</div>
-
 
 {% endfor %}
 
-
-
-
+<div class="container">
+<div class = "well">
+	hello what's up
+</div>
+</div>
 
 {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
