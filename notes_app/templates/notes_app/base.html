@@ -1,6 +1,23 @@
+<!DOCTYPE html>
+<html lang = "en">
+
 <html>
 
 <head>
+  	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+
 
 
 	<title>
@@ -13,11 +30,29 @@
 
 <body>
 
-	<h2><a href = "{% url 'index' %}">Home</a>
-	</h2>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="#">Ultimate Notes</a>
+    		</div>
+    		
+  		</div>
+	</nav>
 
 
-	{% block content %}
+	
+	</h1>
+	
+	
+	
+
+
+{% block content %}
+
+	
+
+
+	
 
 	<H1>BLOCK CONTENT LOADED IN BASE.HTML</H1>
 

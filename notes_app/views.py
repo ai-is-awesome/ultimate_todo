@@ -70,3 +70,7 @@ def delete_task(request, pk):
 
 
 
+
+
+
+
