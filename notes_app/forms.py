@@ -6,6 +6,7 @@ from .models import *
 
 
 class TaskForm(forms.ModelForm):
+	body = forms.CharField(required = False)
 
 	class Meta:
 		model = Task
