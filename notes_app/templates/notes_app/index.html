@@ -12,9 +12,8 @@
 <form action = "{% url 'index' %}" method = "POST">
 	{% csrf_token %}
 	<div class = "container">
-	{{form.title.label }}: {{ form.title }}
-
-	<input type = "submit" value = "Create Task">
+<h2>{{ form.title }}
+	<input type = "submit" value = "Create Task" class = "btn btn-primary"></h2>
 	</div>
 
 
@@ -24,14 +23,15 @@
 </form>
 
 
-
+<br><br>
 
 
 {% for task in tasks %}
 <div class = "container">
 	<div class = "well">
-	<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>&nbsp;&nbsp;&nbsp;&nbsp;
+	<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>
 		<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
+		<br>
 		Last Updated: {{ task.created }}
 	</p><br>
 	</div>
