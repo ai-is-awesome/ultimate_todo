@@ -5,43 +5,43 @@
 {% block content %}
 
 
-<h1>Template Loaded!
-</h1>
 
 
 
-<div class = "container">
+
 <form action = "{% url 'index' %}" method = "POST">
 	{% csrf_token %}
-
+	<div class = "container">
 	{{ form }}
 
+	<input type = "submit" value = "Create Task">
+	</div>
 
-<input type = "submit" value = "Create Task">
+
 
 
 
 </form>
 
-</div>
+
 
 
 
 {% for task in tasks %}
+<div class = "container">
 	<div class = "well">
 	<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
 		Last Updated: {{ task.created }}
 	</p><br>
 	</div>
-
+</div>
 {% endfor %}
 
-<div class="container">
-<div class = "well">
-	hello what's up
-</div>
-</div>
+
+
+
+
 
 {% endblock content %}
 
