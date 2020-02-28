@@ -9,7 +9,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 class User(AbstractBaseUser):
 
-	
+
 	email = models.EmailField(
 		verbose_name = 'email address',
 		max_length = 255, 
@@ -17,13 +17,16 @@ class User(AbstractBaseUser):
 
 	active = models.BooleanField(default = True)
 	staff = models.BooleanField(deafault = False)
+	date_joined = models.DateTimeField(verbose_name = 'date joined')
+	username = models.CharField(max_length = 30)
 
 	admin = models.BooleanField(default = False)
 
 	USERNAME_FIELD = 'email'
 
-	REQUIRED_FIELDS = []
+	REQUIRED_FIELDS = ['username']
 
+	objects = UserManager()
 
 
 	def get_full_name(self):
@@ -61,6 +64,60 @@ class User(AbstractBaseUser):
 	def is_admin(self):
 		return self.admin
 	
+
+
+
+class UserManager(BaseUserManager):
+	"""
+	Creates and saves a user with the given email and 
+	password
+	"""
+
+	if not email:
+		raise ValueError('Users must have an email addresss. ')
+
+	if not username:
+		raise ValueError('Users must have a usename. ')
+
+
+	user = self.model(
+		email = self.normalize_email(email)
+
+		)
+
+	user.set_password(password)
+	user.save(using = self._db)
+	return user
+
+
+
+def create_superuser(self, email, password):
+	"""
+	Creates and saves a superuser with the given email and 
+	password. 
+	"""
+
+	user = self.create_user(
+
+
+
+			email, password = password
+
+		)
+
+	user.staff = True
+	user.admin = True
+
+	user.save(using = self._db)
+
+	return user
+
+
+
+
+
+
+
 
 
 
