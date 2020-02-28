@@ -49,6 +49,19 @@ def index(request):
 
 def update(request, pk):
 	context = {}
+
+	if request.method == 'POST':
+		task = Task.objects.get(id = pk)
+
+		form = TaskForm(request.POST,instance = task)
+		if form.is_valid():
+			form.save()
+		
+
+
+
+
+
 	task = Task.objects.get(id = pk)
 	form = TaskForm(instance = task)
 
@@ -65,6 +78,8 @@ def delete_task(request, pk):
 	task.delete()
 
 	return redirect(reverse('index'))
+
+
 
 
 

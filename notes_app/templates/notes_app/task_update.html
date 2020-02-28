@@ -10,14 +10,13 @@ Welcome to update page
 </h1>
 
 
-<form action = "{% url 'index' %}" method = "POST">
+<form action = "" method = "POST">
 
 
 	{% csrf_token %}
 
-	{{ form.title }}<br>
-	{{ form.body }}<br>
-	Completed: {{ form.complete }}
+	{{ form }}
+
 	<br><br>
 
 	<input type = "submit" value = "Update">
