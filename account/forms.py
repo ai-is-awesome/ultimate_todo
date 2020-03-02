@@ -1,9 +1,12 @@
 from django import forms
 
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-
+from django.contrib.auth import get_user_model
 from .models import Account
 
+
+
+Account = get_user_model()
 
 
 
@@ -28,14 +31,14 @@ class RegisterForm(forms.ModelForm):
 			return email
 
 	
-	# def clean_password2(self):
+	def clean_password2(self):
 
-	# 	password1 = self.cleaned_data.get("password1")
-	# 	password2 = self.cleaned_data.get("password2")
-	# 	if password1 != password2:
-	# 		raise forms.ValidationError("passwords don\'t match. ")
+		password1 = self.cleaned_data.get("password")
+		password2 = self.cleaned_data.get("password2")
+		if password1 != password2:
+			raise forms.ValidationError("passwords don\'t match. ")
 
-	# 	return self.cleaned_data.get("password2")
+		return self.cleaned_data.get("password2")
 
 
 class UserAdminCreationForm(forms.ModelForm):
