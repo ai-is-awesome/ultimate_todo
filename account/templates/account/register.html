@@ -1,0 +1,27 @@
+<h1>Welcome to the register page</h1>
+
+
+<form action = "{% url 'register' %}" method = "POST">
+	{% csrf_token %}
+	<fieldset class = "form-group">
+		<legend class = "border-bottom mb-4">Register</legend>
+		{{ form }}
+		<input type = "submit" value = "Sign Up">
+	</fieldset>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
