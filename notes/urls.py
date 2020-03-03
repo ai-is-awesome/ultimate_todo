@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from account.views import signup_view
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
 	path('', include("notes_app.urls")),  
     path('admin/', admin.site.urls),
-    path('register/', signup_view, name = 'register')
+    path('register/', signup_view, name = 'register'), 
+    path('login/', auth_views.LoginView.as_view(template_name = 'account/login.html'), name = 'login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name = 'account/logout.html'), name = 'logout')
+
+
 ]
