@@ -15,7 +15,8 @@ def signup_view(request):
 			form.save()
 			return redirect('index')
 		else:
-			form = RegistrationForm()
+			form = RegisterForm()
+			errors = form.errors
 
 
 	else:

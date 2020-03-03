@@ -1,6 +1,8 @@
 <h1>Welcome to the register page</h1>
 
 
+
+
 <form action = "{% url 'register' %}" method = "POST">
 	{% csrf_token %}
 	<fieldset class = "form-group">
@@ -10,6 +12,11 @@
 	</fieldset>
 </form>
 
+
+{% for error in errors %}
+{{ error }}
+
+{% endfor %}
 
 
 
