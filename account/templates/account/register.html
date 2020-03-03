@@ -7,7 +7,7 @@
 
 
 
-{% endif %}
+
 
 
 <form action = "{% url 'register' %}" method = "POST">
@@ -18,6 +18,8 @@
 		<input type = "submit" value = "Sign Up">
 	</fieldset>
 </form>
+
+{% endif %}
 
 
 {% for error in errors %}
