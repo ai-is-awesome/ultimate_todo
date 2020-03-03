@@ -1,6 +1,13 @@
 <h1>Welcome to the register page</h1>
 
+{% if user.is_authenticated %}
+	<h2>You're already logged in, You need to <a href = "{% url 'logout' %}">log out</a> first</h2>
 
+{% else %}
+
+
+
+{% endif %}
 
 
 <form action = "{% url 'register' %}" method = "POST">

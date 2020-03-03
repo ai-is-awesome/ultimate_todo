@@ -6,7 +6,7 @@
 
 
 
-
+{% if user.is_authenticated %}
 
 
 <form action = "{% url 'index' %}" method = "POST">
@@ -39,6 +39,11 @@
 {% endfor %}
 
 
+{% elif not user.is_authenticated %}
+
+You're not logged in, log in?
+
+{% endif %}
 
 
 
