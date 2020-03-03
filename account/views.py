@@ -13,7 +13,7 @@ def signup_view(request):
 			new_user = form.save()
 			username = form.cleaned_data.get('username')
 			messages.success(request, 'Account created for %s' % (username))
-			new_user = authenticate(request, username = username, password = form.cleaned_data.get('password'))
+			
 			login(request, new_user)
 			
 			return redirect('index')
