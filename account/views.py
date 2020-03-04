@@ -17,9 +17,10 @@ def signup_view(request):
 			login(request, new_user)
 			
 			return redirect('index')
+
 		else:
-			form = RegisterForm()
 			errors = form.errors
+			return render(request, 'account/register.html', {'form' : form})
 
 
 	else:
