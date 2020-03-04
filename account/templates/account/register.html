@@ -1,3 +1,7 @@
+{% extends 'notes_app/base.html' %}
+
+{% block content %}
+
 <h1>Welcome to the register page</h1>
 
 {% if user.is_authenticated %}
@@ -30,15 +34,13 @@
 
 	{% endfor %}
 
-{% else %}
-NO form error found!
-{% endif %}
-
-
-
-
 
 
 {% endif %}
 
 
+{% endif %}
+
+
+
+{% endblock content %}

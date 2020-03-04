@@ -1,3 +1,8 @@
+{% extends 'notes_app/base.html' %}
+
+
+{% block content %}
+
 <h1>Login</h1>
 
 
@@ -7,17 +12,22 @@
 {% else %}
 
 <form action = "{% url 'login' %}" method = "POST">
+	<div class = "well">
 	{% csrf_token %}
 
-	{{ form }}
+	{{ form.as_p }}
 
+	<input type = "submit" value = "Login" class = "btn btn-success">	
+	</div>
 	
-	<input type = "submit" value = "login">
+	
 
 </form>
 
 <br>	
-<a href = "{% url 'register' %}">Sign up</a>
+<a href = "{% url 'register' %}">Don't have an account? Sign up</a>
 
 
 {% endif %}
+
+{% endblock content %}
