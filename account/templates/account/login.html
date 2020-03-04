@@ -1,5 +1,11 @@
 <h1>Login</h1>
 
+
+{% if user.is_authenticated %}
+	<h2>You're already logged in, You need to <a href = "{% url 'logout' %}">log out</a> first. 
+
+{% else %}
+
 <form action = "{% url 'login' %}" method = "POST">
 	{% csrf_token %}
 
@@ -10,5 +16,8 @@
 
 </form>
 
-<br>
+<br>	
 <a href = "{% url 'register' %}">Sign up</a>
+
+
+{% endif %}

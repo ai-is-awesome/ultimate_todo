@@ -3,12 +3,12 @@
 {% if user.is_authenticated %}
 	<h2>You're already logged in, You need to <a href = "{% url 'logout' %}">log out</a> first</h2>
 
+
+
+
+
+
 {% else %}
-
-
-
-
-
 
 <form action = "{% url 'register' %}" method = "POST">
 	{% csrf_token %}
@@ -19,14 +19,26 @@
 	</fieldset>
 </form>
 
+
+
+{% if form.errors %}
+	{% for field in form %}
+		{% for error in field.errors %}
+			<strong> {{ error }}</strong>
+		{% endfor %}
+
+
+	{% endfor %}
+
+{% else %}
+NO form error found!
 {% endif %}
 
 
-{% for error in errors %}
-{{ error }}
-
-{% endfor %}
 
 
+
+
+{% endif %}
 
 
