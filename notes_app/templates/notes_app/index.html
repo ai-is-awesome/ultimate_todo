@@ -12,7 +12,8 @@
 <form action = "{% url 'index' %}" method = "POST">
 	{% csrf_token %}
 	<div class = "container">
-<h2>{{ form.title }}
+<h2>{{ form.title }}</h2>
+<h2>{{ form.author }}</h2>
 	<input type = "submit" value = "Create Task" class = "btn btn-primary"></h2>
 	</div>
 
@@ -30,6 +31,9 @@
 <div class = "container">
 	<div class = "well">
 	<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>
+		
+		By {{ task.author.username }}
+		<br>
 		<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
 		<br>
 		Last Updated: {{ task.created }}
@@ -48,6 +52,7 @@
 
 
 {% endblock content %}
+
 
 
 

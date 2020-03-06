@@ -13,6 +13,10 @@ from django.urls import reverse
 
 def index(request):
 	context = {}
+	current_user = request.user
+	tasks = Task.objects.filter(author = current_user)
+
+
 	if request.method == 'POST':
 		form = TaskForm(request.POST)
 
@@ -25,11 +29,8 @@ def index(request):
 	else:
 		context["not_post"] = True
 
-	tasks = Task.objects.all()
+	
 	form = TaskForm()
-
-
-
 
 	context["tasks"] = tasks
 	context["form"] = form
@@ -50,23 +51,19 @@ def index(request):
 def update(request, pk):
 	context = {}
 
-	if request.method == 'POST':
+	if request.user == Task.objects.get(id = pk).author:
+		if request.method == 'POST':
+			task = Task.objects.get(id = pk)
+			form = TaskForm(request.POST,instance = task)
+			if form.is_valid():
+				form.save()
+
+
 		task = Task.objects.get(id = pk)
+		form = TaskForm(instance = task)
 
-		form = TaskForm(request.POST,instance = task)
-		if form.is_valid():
-			form.save()
-		
-
-
-
-
-
-	task = Task.objects.get(id = pk)
-	form = TaskForm(instance = task)
-
-	context["task"] = task
-	context["form"] = form
+		context["task"] = task
+		context["form"] = form
 
 
 	return render(request, 'notes_app/task_update.html', context)
