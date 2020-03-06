@@ -21,7 +21,10 @@ def index(request):
 		form = TaskForm(request.POST)
 
 		if form.is_valid():
+			form.save(commit = False)
+			form.author = request.user
 			form.save()
+			
 		else:
 			context["invalid_form"] = True
 		return redirect(reverse('index'))

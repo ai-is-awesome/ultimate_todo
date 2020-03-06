@@ -17,7 +17,7 @@ class Task(models.Model):
 
 	created = models.DateTimeField(auto_now_add = True)
 
-	author = models.ForeignKey(AUTH_USER_MODEL, on_delete = models.CASCADE)
+	author = models.ForeignKey(AUTH_USER_MODEL, on_delete = models.CASCADE, related_name = "todolist", null = True, blank = True)
 
 
 
