@@ -13,8 +13,15 @@ from django.urls import reverse
 
 def index(request):
 	context = {}
+
 	current_user = request.user
-	tasks = Task.objects.filter(author = current_user)
+	if request.user.is_authenticated:
+		tasks = Task.objects.filter(author = current_user)
+		context["tasks"] = tasks
+
+	else:
+		pass
+
 
 
 	if request.method == 'POST':
@@ -24,7 +31,7 @@ def index(request):
 			f = form.save(commit = False)
 			f.author = request.user
 			f.save()
-			#return redirect(reverse('index'))
+			return redirect(reverse('index'))
 		else:
 			context["invalid_form"] = True
 		return redirect(reverse('index'))
@@ -35,10 +42,8 @@ def index(request):
 	
 	form = TaskForm()
 
-	context["tasks"] = tasks
+	
 	context["form"] = form
-
-
 
 	return render(request, 'notes_app/index.html', context)
 
@@ -60,6 +65,7 @@ def update(request, pk):
 			form = TaskForm(request.POST,instance = task)
 			if form.is_valid():
 				form.save()
+			return redirect(reverse("index"))
 
 
 		task = Task.objects.get(id = pk)
