@@ -17,6 +17,7 @@ def index(request):
 	current_user = request.user
 	if request.user.is_authenticated:
 		tasks = Task.objects.filter(author = current_user)
+		tasks = tasks.order_by('-created')
 		context["tasks"] = tasks
 
 	else:

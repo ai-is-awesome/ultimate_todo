@@ -9,7 +9,7 @@
 {% if user.is_authenticated %}
 
 
-<form action = "{% url 'index' %}" method = "POST">
+<form action = "{% url 'index' %}" method = "POST" autocomplete="off">
 	{% csrf_token %}
 	<div class = "container">
 <h2>{{ form.title }}</h2>
