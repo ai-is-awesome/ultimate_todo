@@ -24,7 +24,7 @@ def index(request):
 			f = form.save(commit = False)
 			f.author = request.user
 			f.save()
-			return redirect(reverse('index'))
+			#return redirect(reverse('index'))
 		else:
 			context["invalid_form"] = True
 		return redirect(reverse('index'))
