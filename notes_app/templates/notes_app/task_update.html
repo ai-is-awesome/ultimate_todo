@@ -5,21 +5,28 @@
 
 <h1>
 
+<div class = "container">
 
 Welcome to update page
+</div>
 </h1>
+<Br><br>
 
 
 <form action = "" method = "POST" autocomplete="off">
+	<div class = 'container-fluid'>
+		<div class = "well">
 
 
 	{% csrf_token %}
 
-	{{ form }}
+	{{ form.as_p }}
 
 	<br><br>
 
-	<input type = "submit" value = "Update">
+	<input type = "submit" value = "Update" class = "btn btn-primary">
+	</div>
+</div>
 
 </form>
 

@@ -6,9 +6,9 @@ from .models import *
 from notes.settings import AUTH_USER_MODEL
 
 class TaskForm(forms.ModelForm):
-	body = forms.CharField(required = False)
+	#body = forms.CharField(required = False)
 	class Meta:
 		model = Task
-		fields = ['title']
+		fields = ['title', 'body']
 		exclude = ['author']
 

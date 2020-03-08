@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Task
 from .forms import TaskForm
 from django.urls import reverse
-
+from django.contrib import messages
 
 # Create your views here.
 
@@ -67,6 +67,9 @@ def update(request, pk):
 				task = Task.objects.get(id = pk)
 				form = TaskForm(request.POST,instance = task)
 				if form.is_valid():
+					body = form.cleaned_data["body"]
+					messages.success(request, "The body is %s" % (body))
+
 					form.save()
 				return redirect(reverse("index"))
 
@@ -86,6 +89,7 @@ def update(request, pk):
 
 
 		else:
+
 			return redirect(reverse('index'))
 
 
