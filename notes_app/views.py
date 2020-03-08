@@ -31,6 +31,7 @@ def index(request):
 		if form.is_valid():
 			f = form.save(commit = False)
 			f.author = request.user
+			f.body = ""
 			f.save()
 			return redirect(reverse('index'))
 		else:
@@ -67,9 +68,12 @@ def update(request, pk):
 				task = Task.objects.get(id = pk)
 				form = TaskForm(request.POST,instance = task)
 				if form.is_valid():
-					body = form.cleaned_data["body"]
-					messages.success(request, "The body is %s" % (body))
+					#body = form.cleaned_data["body"][:50]
+					title = form.cleaned_data["title"]
+					if len(title) > 50:
+						title = title[:50]
 
+					messages.success(request, "Task \"%s\" successfully updated" % (title))
 					form.save()
 				return redirect(reverse("index"))
 

@@ -9,6 +9,6 @@ class TaskForm(forms.ModelForm):
 	#body = forms.CharField(required = False)
 	class Meta:
 		model = Task
+		#fields = ['title', 'body']
 		fields = ['title', 'body']
-		exclude = ['author']
-
+		

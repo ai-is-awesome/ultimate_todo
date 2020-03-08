@@ -11,7 +11,7 @@ class Task(models.Model):
 
 	title = models.CharField(max_length = 250)
 
-	body = models.TextField(default = "")
+	body = models.TextField(null = True, blank = True)
 
 	complete = models.BooleanField(default = False)
 
