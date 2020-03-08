@@ -32,8 +32,6 @@
 	<div class = "well">
 	<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>
 		
-		By {{ task.author.username }}
-		<br>
 		<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
 		<br>
 		Created: {{ task.created }}<br>
@@ -53,20 +51,6 @@
 
 
 {% endblock content %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

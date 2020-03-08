@@ -31,7 +31,6 @@ def index(request):
 		if form.is_valid():
 			f = form.save(commit = False)
 			f.author = request.user
-
 			f.save()
 			return redirect(reverse('index'))
 		else:

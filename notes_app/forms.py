@@ -12,21 +12,3 @@ class TaskForm(forms.ModelForm):
 		fields = ['title']
 		exclude = ['author']
 
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
