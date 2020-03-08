@@ -36,7 +36,8 @@
 		<br>
 		<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
 		<br>
-		Last Updated: {{ task.created }}
+		Created: {{ task.created }}<br>
+		Updated : {{ task.updated }}
 	</p><br>
 	</div>
 </div>

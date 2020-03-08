@@ -17,7 +17,7 @@ def index(request):
 	current_user = request.user
 	if request.user.is_authenticated:
 		tasks = Task.objects.filter(author = current_user)
-		tasks = tasks.order_by('-created')
+		tasks = tasks.order_by('-updated')
 		context["tasks"] = tasks
 
 	else:
@@ -31,6 +31,7 @@ def index(request):
 		if form.is_valid():
 			f = form.save(commit = False)
 			f.author = request.user
+
 			f.save()
 			return redirect(reverse('index'))
 		else:
@@ -92,15 +93,7 @@ def update(request, pk):
 	elif not user.is_authenticated:
 		return render(request, 'notes_app/index.html')
 
-
-
-
-
-
-
-		
-
-
+	
 
 	return render(request, 'notes_app/task_update.html', context)
 
@@ -120,4 +113,3 @@ def delete_task(request, pk):
 
 
 
-	
