@@ -67,14 +67,15 @@ def update(request, pk):
 			if request.method == 'POST':
 				task = Task.objects.get(id = pk)
 				form = TaskForm(request.POST,instance = task)
-				if form.is_valid():
+				old_title = task.title
+				#if form.is_valid():
 					#body = form.cleaned_data["body"][:50]
-					title = form.cleaned_data["title"]
-					if len(title) > 50:
-						title = title[:50]
+				#title = form.cleaned_data["title"]
+				if len(old_title) > 50:
+					old_title = old_title[:50]
 
-					messages.success(request, "Task \"%s\" successfully updated" % (title))
-					form.save()
+				messages.success(request, "Task \"%s\" successfully updated" % (old_title))
+				form.save()
 				return redirect(reverse("index"))
 
 			elif request.method != "POST":

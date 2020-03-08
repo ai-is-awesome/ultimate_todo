@@ -42,16 +42,26 @@
 {% for task in tasks %}
 <div class = "container">
 	<div class = "well">
-	<p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>
+		<div class = "row">
+
+
+			<div class = "col-sm-4"><p><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a></div>
+			<div class = "col-sm-4"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
+			<div class = "col-sm-4"><a href = "{% url 'task_delete' task.id %}">Delete Task</a></div>
+		</div>
 		
-		<a href = "{% url 'task_delete' task.id %}">Delete Task</a>
-		<br>
-		Created: {{ task.created }}<br>
-		Updated : {{ task.updated }}
+			
+			<br>
+			Updated : {{ task.updated }}
+
+		</p>
+			
+		
+
 	</p><br>
 	</div>
 </div>
-{% endfor %}
+	{% endfor %}
 
 
 
