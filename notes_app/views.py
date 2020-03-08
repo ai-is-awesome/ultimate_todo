@@ -23,7 +23,7 @@ def index(request):
 	else:
 		pass
 
-
+ 
 
 	if request.method == 'POST':
 		form = TaskForm(request.POST)
@@ -120,5 +120,4 @@ def delete_task(request, pk):
 
 
 
-
-
+	
