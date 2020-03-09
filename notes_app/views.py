@@ -63,6 +63,14 @@ def update(request, pk):
 
 
 	if request.user.is_authenticated:
+		current_user = request.user
+		tasks = Task.objects.filter(author = current_user)
+		tasks = tasks.order_by("-updated")
+
+
+
+		#Checking if the current user is the author of the task, if yes then allow him to update his task otherwise redirect him to
+		#index
 		if len(Task.objects.filter(id = pk)) != 0 and  request.user == Task.objects.filter(id = pk)[0].author:
 			if request.method == 'POST':
 				task = Task.objects.get(id = pk)
@@ -84,6 +92,7 @@ def update(request, pk):
 					form = TaskForm(instance = task)
 					context["task"] = task
 					context["form"] = form
+					context["tasks"] = tasks
 					return render(request, 'notes_app/task_update.html', context)
 
 
@@ -112,11 +121,6 @@ def delete_task(request, pk):
 	task.delete()
 
 	return redirect(reverse('index'))
-
-
-
-
-
 
 
 

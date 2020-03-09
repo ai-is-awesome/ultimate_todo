@@ -5,30 +5,67 @@
 
 <h1>
 
-<div class = "container">
+<div class = "container-fluid">
 
+<div class = "row">
+	<div class = "col-md-2">
+	</div>
+	<div class = "col-md-10">
 Welcome to update page
+</div>
+</div>
 </div>
 </h1>
 <Br><br>
 
 
-<form action = "" method = "POST" autocomplete="off">
-	<div class = 'container-fluid'>
-		<div class = "well">
+
+<div class = "container-fluid">
+	<div class = "row">
+	<!-- Row started -->
+		<div class = "col-md-2" style = "background-color:orange;">
+			<!--Column started -->
+			<h1>Recents</h1>
+			{% for task in tasks %}
+				<div class = "well" style = "background-color:lavender;">
+				<a href = "{% url 'task_update' task.id %}">{{ task.title }}</a>
+				</div>
+			{% endfor %}
+			
+
+			
 
 
-	{% csrf_token %}
 
-	{{ form.as_p }}
 
-	<br><br>
 
-	<input type = "submit" value = "Update" class = "btn btn-primary">
+
+
+
+
+
+		
+		</div>
+
+		<div class = "col-sm-10">
+
+			<form action = "" method = "POST" autocomplete="off">
+	
+				<div class = "well">
+
+
+				{% csrf_token %}
+
+				{{ form.as_p }}
+
+				<br><br>
+
+				<input type = "submit" value = "Update" class = "btn btn-primary">
+			</form>
+		</div>
 	</div>
-</div>
 
-</form>
+	
 
 
 
@@ -39,6 +76,9 @@ Welcome to update page
 
 
 {% endblock content %}
+
+
+
 
 
 
