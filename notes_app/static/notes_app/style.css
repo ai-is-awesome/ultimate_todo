@@ -1,18 +1,19 @@
 
 
-body {
-	background-color: blue;
+
+
+.well {
+	background-color : lavender;
+	
+
+
 
 }
 
 
+.align_center {
 
-well {
-	background-color: red !important;
 
+	text-align: center;
 }
 
-
-a {
-	background-color : pink;
-}

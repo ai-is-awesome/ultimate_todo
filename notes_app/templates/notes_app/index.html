@@ -72,6 +72,42 @@
 
 
 
+{% elif not user.is_authenticated %}
+
+<div class = "well">
+<div class = "container">
+	<div class = "row">
+		<div class = "col-sm-4">
+			<div class = "well"><h3>Welcome to Online to-do. This is a website where you can create to-do tasks.</h3></div>
+
+		</div>
+
+		<div class = "col-sm-4">
+			<div class = "well">
+			<h3>The website is in beta right now. There are lots of features that will be added in some time including color labels and label setting. </h3>
+			</div>
+		</div>
+
+		<div class = "col-sm-4">
+			<div class = "well"><h3>The online to-do allows you to create different tasks and save it online so your data is protected and saved in your account.</h3></div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+<div class = "well">
+	<div class = "align_center">
+<br>
+
+<button class = "btn btn-success"><a href = "{% url 'register' %}" style="color: white">Sign Up</a></button>
+<button class = "btn btn-primary"><a href="{% url 'login' %}" style="color: white">Login</a></button>
+</form>
+</div>
+</div>
+
 
 
 {% endif %}

@@ -4,8 +4,7 @@
 <html>
 
 <head>
-	{% load static %}
-	<link rel = "stylesheet" href = "{% static 'notes_app/style.css' %}" type="text/css">
+	
   	
 	
 
@@ -19,7 +18,11 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-	
+
+<!-- Loading static files CSS -->	
+{% load static %}
+<link rel = "stylesheet" href = "{% static 'notes_app/style.css' %}" type="text/css">
+
 
 
     <meta charset="utf-8">
