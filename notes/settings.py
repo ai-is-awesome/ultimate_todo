@@ -135,3 +135,7 @@ LOGOUT_REDIRECT_URL = 'login'
 
 django_heroku.settings(locals())
 
+
+
+
+
