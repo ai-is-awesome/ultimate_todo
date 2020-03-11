@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,6 +30,7 @@ ALLOWED_HOSTS = ["online-todo.herokuapp.com"]
 
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig', 
@@ -130,4 +132,6 @@ AUTH_USER_MODEL = 'account.Account'
 LOGIN_REDIRECT_URL = 'index'
 
 LOGOUT_REDIRECT_URL = 'login'
+
+django_heroku.settings(locals())
 
