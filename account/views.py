@@ -12,7 +12,7 @@ def signup_view(request):
 		if form.is_valid():
 			new_user = form.save()
 			username = form.cleaned_data.get('username')
-			messages.success(request, 'Account created for %s' % (username))
+			messages.success(request, 'Account created for %s loaded in views' % (username))
 			
 			login(request, new_user)
 			
