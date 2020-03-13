@@ -121,8 +121,12 @@ def update(request, pk):
 
 
 def delete_task(request, pk):
-	task = Task.objects.get(id = pk)
-	task.delete()
+	try:
+		task = Task.objects.get(id = pk)
+		task.delete()
+
+	except:
+		pass
 
 	return redirect(reverse('index'))
 
