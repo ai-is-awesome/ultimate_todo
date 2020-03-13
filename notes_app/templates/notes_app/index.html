@@ -53,33 +53,36 @@
 
 	{% if task.complete %}
 		<div class = "container">
-			<div class = "well">
-				<div class = "task-completed">
+			<div class = "well" style = "background-color: darkgrey;">
 				<div class = "row">
-
-				
-					<a>task completed bitch</a>	
 			
-				<div class = "col-sm-4"><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a></div>
+				<div class = "col-sm-4"><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>
+				Complete: {{ task.complete }}
+			<a>Updated : {{ task.updated }}</a></div>
+
 				<div class = "col-sm-4"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
 				<div class = "col-sm-4"><a href = "{% url 'task_delete' task.id %}">Delete Task</a></div>
-				</div></div></div></div>
+				</div></div></div>
 			
 		
 		
-			{% else %}
+	{% else %}
 			<div class = "container">
-			<div class = "well">
-				<div class = "row">
+				<div class = "well">
+					<div class = "row">
 
 
 			
-			<div class = "col-sm-4"><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a></div>
+			<div class = "col-sm-4"><a href = "{% url 'task_update' task.id %}"><h2>{{ task.title }}</h2></a>
+			Complete: {{ task.complete }}
+			<a>Updated : {{ task.updated }}</a>
+			</div>
+
+
 			<div class = "col-sm-4"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
 			<div class = "col-sm-4"><a href = "{% url 'task_delete' task.id %}">Delete Task</a></div>
 			<br>
-			Complete: {{ task.complete }}
-			<a>Updated : {{ task.updated }}</a>
+			
 			</div></div></div>
 			
 			
@@ -151,5 +154,12 @@
 
 
 {% endblock content %}
+
+
+
+
+
+
+
 
 
