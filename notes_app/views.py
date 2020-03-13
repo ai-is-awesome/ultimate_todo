@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Task
@@ -12,6 +13,9 @@ from django.contrib import messages
 
 
 def index(request):
+
+
+
 	context = {}
 
 	current_user = request.user
@@ -19,6 +23,7 @@ def index(request):
 		tasks = Task.objects.filter(author = current_user)
 		tasks = tasks.order_by('-updated')
 		context["tasks"] = tasks
+
 
 	else:
 		pass

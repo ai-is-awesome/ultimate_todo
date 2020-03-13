@@ -1,9 +1,10 @@
 
 
-
-
 .well {
 	background-color : lavender;
+
+
+ 
 	
 
 
@@ -16,4 +17,16 @@
 
 	text-align: center;
 }
+
+
+
+
+.task-completed {
+
+	color : black;
+	background-color : grey;
+
+}
+
+
 
