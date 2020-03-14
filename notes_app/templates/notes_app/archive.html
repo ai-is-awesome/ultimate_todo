@@ -1,0 +1,30 @@
+{% extends 'notes_app/base.html' %}
+
+
+
+{% block content %}
+
+{% for task in tasks %}
+
+{{ task.title }}
+<br>
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+

@@ -21,6 +21,8 @@ class Task(models.Model):
 
 	author = models.ForeignKey(AUTH_USER_MODEL, on_delete = models.CASCADE,  null = True, blank = True)
 
+	archive = models.BooleanField(default = False)
+
 
 
 

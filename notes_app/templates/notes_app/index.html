@@ -50,7 +50,7 @@
 
 
 {% for task in tasks %}
-
+	{% if not task.archive %}
 	{% if task.complete %}
 		<div class = "container">
 			<div class = "well" style = "background-color: darkgrey;">
@@ -61,7 +61,7 @@
 			<a>Updated : {{ task.updated }}</a></div>
 
 				<div class = "col-sm-4"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
-				<div class = "col-sm-4"><a href = "{% url 'task_delete' task.id %}">Delete Task</a></div>
+				<div class = "col-sm-4"><a href = "{% url 'task_archive' task.id %}">Delete Task</a></div>
 				</div></div></div>
 			
 		
@@ -80,7 +80,7 @@
 
 
 			<div class = "col-sm-4"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
-			<div class = "col-sm-4"><a href = "{% url 'task_delete' task.id %}">Delete Task</a></div>
+			<div class = "col-sm-4"><a href = "{% url 'task_archive' task.id %}">Delete Task</a></div>
 			<br>
 			
 			</div></div></div>
@@ -88,25 +88,8 @@
 			
 			
 			{% endif %}
-		
-		
-		
-	</div>
-
-</div>
-			<br>
-			
-
-			
-
-		</p>
-			
-		
-
-	</p><br>
-	</div>
-</div>
-	{% endfor %}
+			{% endif %}
+			{% endfor %}
 
 
 

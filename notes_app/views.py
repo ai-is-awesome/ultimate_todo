@@ -120,15 +120,25 @@ def update(request, pk):
 
 
 
-def delete_task(request, pk):
+def archive_task(request, pk):
+
 	try:
+		#If someone clicks on the delete task link, then archive the task and redirect
 		task = Task.objects.get(id = pk)
-		task.delete()
+		task.archive = True
+		task.save()
+		return redirect(reverse('index'))
+		
 
 	except:
 		pass
 
-	return redirect(reverse('index'))
+	#If someone visits the archive_task view(ie doesn't click on the delete button but just visits the page) then
+	# show all the archive tasks to the user
+	tasks = Task.objects.filter(archive = True)
+	context = {'tasks' :tasks}
+	return render(request, 'notes_app/archive.html', context)
+	
 
 
 
