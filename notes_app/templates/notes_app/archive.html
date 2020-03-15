@@ -6,9 +6,23 @@
 
 {% for task in tasks %}
 
-{{ task.title }}
-<br>
 
+
+<div class = "container">
+<div class = "well" style = "background-color: darkgrey">
+
+<div class = "row">
+	<div class = "col-sm-4">{{ task.title }}</div>
+
+	<div class = "col-sm-4">{{ task.created}}</div>
+
+	<div class = "col-sm-4"><a href = "">Restore</a></div>
+</div>
+
+
+
+</div>
+</div>
 
 {% endfor %}
 

@@ -19,7 +19,7 @@ def index(request):
 
 	current_user = request.user
 	if request.user.is_authenticated:
-		tasks = Task.objects.filter(author = current_user)
+		tasks = Task.objects.filter(author = current_user, archive = False)
 		tasks = tasks.order_by('-updated')
 		context["tasks"] = tasks
 
@@ -68,7 +68,7 @@ def update(request, pk):
 
 	if request.user.is_authenticated:
 		current_user = request.user
-		tasks = Task.objects.filter(author = current_user)
+		tasks = Task.objects.filter(author = current_user, archive = False)
 		tasks = tasks.order_by("-updated")
 
 
@@ -124,26 +124,57 @@ def archive_task(request, pk):
 
 	try:
 		#If someone clicks on the delete task link, then archive the task and redirect
-		task = Task.objects.get(id = pk)
-		task.archive = True
-		task.save()
-		return redirect(reverse('index'))
-		
+		user = request.user
+		author = Task.objects.get(id = pk).author
+		if user == author:
+			task = Task.objects.get(id = pk)
+			task.archive = True
+			task.save()
+			return redirect(reverse('index'))
+
 
 	except:
 		pass
+		
+
+	
+	
 
 	#If someone visits the archive_task view(ie doesn't click on the delete button but just visits the page) then
 	# show all the archive tasks to the user
-	tasks = Task.objects.filter(archive = True)
-	context = {'tasks' :tasks}
-	return render(request, 'notes_app/archive.html', context)
+
+	#tasks = Task.objects.filter(archive = True)
+	#context = {'tasks' :tasks}
+	#return render(request, 'notes_app/archive.html', context)
 	
 
 
+def show_archives(request):
+
+	tasks = Task.objects.filter(archive = True)
+	context = {'tasks' : tasks}
+	return render(request, 'notes_app/archive.html', context)
 
 
 
+
+
+
+def restore_archive(request, pk):
+	try:
+		current_user = request.user
+		author = Task.objects.get(id = pk).author
+		if current_user == author:
+			task = Task.objects.get(id = pk)
+			task.archive = False
+			task.save()
+
+		return redirect(reverse('index'))
+
+
+
+	except:
+		return redirect(reverse('index'))
 
 
 
