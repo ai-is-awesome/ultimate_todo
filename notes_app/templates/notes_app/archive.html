@@ -2,6 +2,8 @@
 
 
 
+
+
 {% block content %}
 
 {% for task in tasks %}
@@ -16,7 +18,7 @@
 
 	<div class = "col-sm-4">{{ task.created}}</div>
 
-	<div class = "col-sm-4"><a href = "">Restore</a></div>
+	<div class = "col-sm-4"><a href = "{% url 'restore_archive' task.id %}">Restore</a></div>
 </div>
 
 
@@ -39,6 +41,50 @@
 
 
 {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How to ignore some fields when updating the time using auto_add = True?
+
+
+I have a Task model which have the fields title, body, created_time, updated_time and archive. updated_time updates the time 
+whenever any of the above fields changes. But, I don't want the time to be updated when archive changes. I'm not able to google this question properly. How can I do that?
+
 
 
 

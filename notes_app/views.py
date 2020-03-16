@@ -150,8 +150,13 @@ def archive_task(request, pk):
 
 
 def show_archives(request):
+	if request.user.is_authenticated:
+		current_user = request.user
+	else:
+		current_user = None
 
-	tasks = Task.objects.filter(archive = True)
+	tasks = Task.objects.filter(archive = True, author = current_user)
+	tasks = tasks.order_by('-updated')
 	context = {'tasks' : tasks}
 	return render(request, 'notes_app/archive.html', context)
 
@@ -169,12 +174,17 @@ def restore_archive(request, pk):
 			task.archive = False
 			task.save()
 
-		return redirect(reverse('index'))
+		return redirect(reverse('archives'))
 
 
 
 	except:
 		return redirect(reverse('index'))
+
+
+
+
+
 
 
 
