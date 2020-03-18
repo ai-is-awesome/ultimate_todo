@@ -1,16 +1,26 @@
 
 
-.well {
+#task_complete {
 	background-color : lavender;
 	font-family : verdana;
-
-
- 
+	border-width : .5px .5px .5px 6px;
 	
-
-
+	border-style: solid;
+	border-color: orange;
 
 }
+
+
+#task_incomplete {
+	background-color : lavender;
+	font-family : verdana;
+	border-width : .5px .5px .5px 6px;
+	
+	border-style: solid;
+	border-color: orange;
+
+}
+
 
 
 .align_center {
