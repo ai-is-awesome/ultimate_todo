@@ -6,7 +6,18 @@
 
 {% block content %}
 
+
+
+{% if no_archives %}
+<div class = "container">
+	<div class = "well">
+	<h1>No archived Tasks </h1>
+	</div>
+</div>
+{% endif %}
+
 {% for task in tasks %}
+
 
 
 
@@ -14,11 +25,12 @@
 <div class = "well" style = "background-color: darkgrey">
 
 <div class = "row">
-	<div class = "col-sm-4">{{ task.title }}</div>
+	<strong><div class = "col-sm-3">{{ task.title }}</div></strong>
 
-	<div class = "col-sm-4">{{ task.created}}</div>
+	<div class = "col-sm-3">{{ task.created}}</div>
 
-	<div class = "col-sm-4"><a href = "{% url 'restore_archive' task.id %}">Restore</a></div>
+	<div class = "col-sm-3"><a href = "{% url 'restore_archive' task.id %}" class="btn btn-primary">Restore</a></div>
+	<div class = "col-sm-3"><a href = "{% url 'delete_archive' task.id %}" class = "btn btn-danger">Delete Permanently</a></div>
 </div>
 
 

@@ -4,7 +4,7 @@ from .models import Task
 from .forms import TaskForm
 from django.urls import reverse
 from django.contrib import messages
-
+from django.utils import timezone as tz
 # Create your views here.
 
 
@@ -16,6 +16,9 @@ def index(request):
 
 
 	context = {}
+	html_dict = {True : 'task_complete', False : ''}
+	context["html_dict"] = html_dict
+
 
 	current_user = request.user
 	if request.user.is_authenticated:
@@ -36,6 +39,7 @@ def index(request):
 			f = form.save(commit = False)
 			f.author = request.user
 			f.body = ""
+			f.updated = tz.now()
 			f.save()
 			return redirect(reverse('index'))
 		else:
@@ -150,6 +154,7 @@ def archive_task(request, pk):
 
 
 def show_archives(request):
+	context = {}
 	if request.user.is_authenticated:
 		current_user = request.user
 	else:
@@ -157,7 +162,14 @@ def show_archives(request):
 
 	tasks = Task.objects.filter(archive = True, author = current_user)
 	tasks = tasks.order_by('-updated')
-	context = {'tasks' : tasks}
+
+	#If no tasks, then tell user no tasks are deleted
+	if len(tasks) == 0:
+		no_archives = True
+		context["no_archives"] = no_archives
+
+
+	context["tasks"] =tasks
 	return render(request, 'notes_app/archive.html', context)
 
 
@@ -183,8 +195,25 @@ def restore_archive(request, pk):
 
 
 
+def delete_archive(request, pk):
+	try:
+		current_user = request.user
+		author = Task.objects.get(id = pk).author
+		if current_user == author:
+			task = Task.objects.get(id = pk)
+			task.delete()
+			messages.warning(request, "Task %s deleted permanently. " % (task.title))
+			return redirect(reverse('archives'))
+
+		
+		
 
 
+	except:
+		messages.warning('Unable to delete Task. ')
+		return redirect(reverse('archives'))
+
+	
 
 
 

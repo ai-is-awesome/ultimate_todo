@@ -2,6 +2,7 @@
 
 .well {
 	background-color : lavender;
+	font-family : verdana;
 
 
  
@@ -25,6 +26,15 @@
 
 	color : black;
 	background-color : grey;
+
+}
+
+
+
+
+#task_complete {
+	background-color : darkgrey;
+
 
 }
 
