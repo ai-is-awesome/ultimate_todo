@@ -58,8 +58,10 @@
 				<div class = "col-sm-4"><a href = "{% url 'task_update' task.id %}"><h2><strike>{{ task.title }}</strike></h2></a>
 			Updated : {{ task.updated }}</div>
 
-				<div class = "col-sm-4"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
-				<div class = "col-sm-4"><a href = "{% url 'task_archive' task.id %}">Delete Task</a></div>
+				<div class = "col-sm-2"><a href = "{% url 'update_complete_field' task.id %}" class = "btn btn-primary">Completed</a></div>
+
+				<div class = "col-sm-3"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
+				<div class = "col-sm-3"><a href = "{% url 'task_archive' task.id %}" style = "color : red">Delete Task</a></div>
 				</div></div></div>
 			
 		
@@ -75,9 +77,20 @@
 			Updated : {{ task.updated }}
 			</div>
 
+			<div class = "col-sm-2">
+				<a href = "{% url 'update_complete_field' task.id %}" class = "btn btn-primary">Tick off</a>
+				
 
-			<div class = "col-sm-4"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
-			<div class = "col-sm-4"><a href = "{% url 'task_archive' task.id %}">Delete Task</a></div>
+
+
+			</div>
+				
+
+
+
+
+			<div class = "col-sm-3"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
+			<div class = "col-sm-3"><a href = "{% url 'task_archive' task.id %}" style = "color : red">Delete Task</a></div>
 			<br>
 			
 			</div></div></div>

@@ -134,6 +134,7 @@ def archive_task(request, pk):
 			task = Task.objects.get(id = pk)
 			task.archive = True
 			task.save()
+			messages.warning(request, "Task \"%s  \" archived" % (task.title))
 			return redirect(reverse('index'))
 
 
@@ -201,8 +202,9 @@ def delete_archive(request, pk):
 		author = Task.objects.get(id = pk).author
 		if current_user == author:
 			task = Task.objects.get(id = pk)
+			title = task.title
 			task.delete()
-			messages.warning(request, "Task %s deleted permanently. " % (task.title))
+			messages.warning(request, "Task %s deleted permanently. " % (title))
 			return redirect(reverse('archives'))
 
 		
@@ -210,11 +212,22 @@ def delete_archive(request, pk):
 
 
 	except:
-		messages.warning('Unable to delete Task. ')
+		messages.warning(request, 'Unable to delete Task. ')
 		return redirect(reverse('archives'))
 
 	
+def update_complete_field(request, pk):
+	try:
+		current_user = request.user
+		author = Task.objects.get(id = pk).author
+		if current_user == author:
+			task = Task.objects.get(id = pk)
+			task.complete = not task.complete
+			task.save()
+			return redirect(reverse(index))
 
+	except:
+		pass
 
 
 
