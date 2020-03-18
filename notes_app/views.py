@@ -115,8 +115,8 @@ def update(request, pk):
 			return redirect(reverse('index'))
 
 
-	elif not user.is_authenticated:
-		return render(request, 'notes_app/index.html')
+	elif not request.user.is_authenticated:
+		return redirect(reverse(index))
 
 	
 
@@ -160,6 +160,7 @@ def show_archives(request):
 		current_user = request.user
 	else:
 		current_user = None
+		return redirect(reverse(index))
 
 	tasks = Task.objects.filter(archive = True, author = current_user)
 	tasks = tasks.order_by('-updated')
@@ -226,8 +227,12 @@ def update_complete_field(request, pk):
 			task.save()
 			return redirect(reverse(index))
 
+
+
 	except:
 		pass
+
+	return redirect(reverse(index))
 
 
 
