@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Task, Title, Item
-from .forms import TaskForm
+from .forms import TaskForm, TitleForm
 from django.urls import reverse
 from django.contrib import messages
 from django.utils import timezone as tz
@@ -187,6 +187,7 @@ def restore_archive(request, pk):
 			task = Task.objects.get(id = pk)
 			task.archive = False
 			task.save()
+			messages.success(request, 'Task \"%s\" restored. ' % (task.title))
 
 		return redirect(reverse('archives'))
 
@@ -244,5 +245,21 @@ def checklists_view(request):
 
 
 
+def create_checklist(request):
+	if request.method == 'POST':
+		form = TitleForm(request.POST)
+
+
+
+
 def checklist_detail(request, pk):
-	return render(request, "notes_app/checklist_detail.html")
+	title = Title.objects.get(id = pk)
+	items = title.item_set.all()
+	context = {}
+	context['title'] = title
+	context['items'] = items
+	return render(request, "notes_app/checklist_detail.html", context)
+
+
+
+

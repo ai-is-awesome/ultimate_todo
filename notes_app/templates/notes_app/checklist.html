@@ -6,7 +6,7 @@
 
 {% for checklist_title in checklist_titles %}
 <div class ="well">
-	{{ checklist_title.title}}
+	<a href = "{% url 'checklist_detail' checklist_title.id %}">{{ checklist_title.title}}</a>
 </div>
 {% endfor %}
 
