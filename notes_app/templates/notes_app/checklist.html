@@ -1,0 +1,18 @@
+{% extends 'notes_app/base.html' %}
+
+
+{% block content %}
+
+
+{% for checklist_title in checklist_titles %}
+<div class ="well">
+	{{ checklist_title.title}}
+</div>
+{% endfor %}
+
+
+
+
+
+
+{% endblock content %}

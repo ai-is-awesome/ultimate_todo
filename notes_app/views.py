@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Task
+from .models import Task, Title, Item
 from .forms import TaskForm
 from django.urls import reverse
 from django.contrib import messages
@@ -235,6 +235,14 @@ def update_complete_field(request, pk):
 	return redirect(reverse(index))
 
 
+def checklists_view(request):
+	checklist_titles = Title.objects.all()
+	context = {}
+	context["checklist_titles"] = checklist_titles
+
+	return render(request, "notes_app/checklist.html", context)
 
 
 
+def checklist_detail(request, pk):
+	return render(request, "notes_app/checklist_detail.html")

@@ -23,28 +23,26 @@
 
 
 
-.align_center {
-
-
+#align_center {
+	color : blue;
 	text-align: center;
 }
 
 
 
 
-.task-completed {
+/*.task-completed {
 
 	color : black;
 	background-color : grey;
 
 }
 
-
+*/
 
 
 #task_complete {
 	background-color : darkgrey;
-
 
 }
 
