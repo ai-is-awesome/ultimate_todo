@@ -237,11 +237,27 @@ def update_complete_field(request, pk):
 
 
 def checklists_view(request):
-	checklist_titles = Title.objects.all()
 	context = {}
+	checklist_titles = Title.objects.all()
+	checklist_titles = checklist_titles.order_by('-created')
+	form = TitleForm()
+	context['form'] = form
 	context["checklist_titles"] = checklist_titles
 
-	return render(request, "notes_app/checklist.html", context)
+	if request.method == 'POST':
+		form = TitleForm(request.POST)
+		if form.is_valid():
+			form.save()
+
+			return redirect(reverse('checklists'))
+
+		else:
+			messages.warning(request, 'Unable to create New Checklist')
+			return redirect(reverse('checklists'))
+	
+	
+	return render(request, 'notes_app/checklist.html', context)
+	
 
 
 

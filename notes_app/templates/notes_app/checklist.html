@@ -3,10 +3,26 @@
 
 {% block content %}
 
+<div class = "jumbotron">
+	<h1>Checklists</h1>
+</div>
+<div class = "container">
+<form action = "{% url 'checklists' %}" method = "POST" autocomplete="off">
+	{% csrf_token %}
 
-{% for checklist_title in checklist_titles %}
-<div class ="well">
-	<a href = "{% url 'checklist_detail' checklist_title.id %}">{{ checklist_title.title}}</a>
+
+	<h2>{{ form.title }}</h2>
+	<input type = "submit" value = "Create a New Checklist" class = "btn btn-primary"/>
+</form>
+</div>
+
+<br><br>
+
+	{% for checklist_title in checklist_titles %}
+	<div class = "container">
+	<div class ="well">
+		<a href = "{% url 'checklist_detail' checklist_title.id %}">{{ checklist_title.title}}</a>
+	</div>
 </div>
 {% endfor %}
 

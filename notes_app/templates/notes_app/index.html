@@ -28,8 +28,13 @@
 
 
 {% if user.is_authenticated %}
+<div class = "container-fluid" id = "go_to_checklists">
+	<div class = "well">
+	<a href = "{% url 'checklists' %}">Go to Checklists</a>
+	</div>
+</div>
 
-<div class = "container">
+<div class = "container" id = "form_container">
 	<div class = "row">
 	<form action = "{% url 'index' %}" method = "POST" autocomplete="off">
 		{% csrf_token %}
@@ -38,18 +43,14 @@
 
 				<h2>{{ form.title }}</h2>
 			</div>
-			<div class = "col-sm-3"><h2><input type = "submit" value = "Create Task" class = "btn btn-primary"></h2>
+			<div class = "col-sm-3"><h2><input type = "submit" value = "Create Note" class = "btn btn-primary"></h2>
 			</div>
 		
 	</form>
-	
-		<div class = "col-sm-2">
-			<h2><a href = "{% url 'checklist_create' %}" class = "btn btn-primary">Create a new checklist</a></h2>
-		</div>
-	</div>
-
+			</div>
 
 <br><br>
+
 
 
 {% for task in tasks %}
