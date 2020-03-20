@@ -16,7 +16,8 @@ urlpatterns = [
 	path('archives/delete/<str:pk>', views.delete_archive, name = "delete_archive"), 
 	path('update_complete_field/<str:pk>', views.update_complete_field, name = "update_complete_field"), 
 	path('checklist/', views.checklists_view, name = "checklists"), 
-	path('checklist/title/<str:pk>', views.checklist_detail, name = "checklist_detail")
+	path('checklist/title/<str:pk>', views.checklist_detail, name = "checklist_detail"), 
+	path('checklist/create', views.create_checklist, name = 'checklist_create'), 
 
 
 

@@ -246,8 +246,15 @@ def checklists_view(request):
 
 
 def create_checklist(request):
+	context = {}
+	form = TitleForm()
 	if request.method == 'POST':
 		form = TitleForm(request.POST)
+		if form.is_valid():
+			form.save()
+
+	context['form'] = form
+	return render(request, 'notes_app/checklist_create.html', context)
 
 
 

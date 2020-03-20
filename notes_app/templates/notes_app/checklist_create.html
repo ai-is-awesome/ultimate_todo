@@ -1,0 +1,12 @@
+{% extends 'notes_app/base.html' %}
+
+{% block content %}
+
+<form autocomplete="off" method="post" target = "{% url 'checklist_create' %}">
+	{% csrf_token %}
+	{{ form }}
+	<input type = "submit" value = "Submit"/>
+</form>	
+
+
+{% endblock content %}

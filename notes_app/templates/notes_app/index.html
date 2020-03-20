@@ -29,24 +29,24 @@
 
 {% if user.is_authenticated %}
 
+<div class = "container">
+	<div class = "row">
+	<form action = "{% url 'index' %}" method = "POST" autocomplete="off">
+		{% csrf_token %}
+		
+			<div class = "col-sm-4">
 
-<form action = "{% url 'index' %}" method = "POST" autocomplete="off">
-	{% csrf_token %}
-	<div class = "container">
-<h2>{{ form.title }}</h2>
-<h2>{{ form.author }}</h2>
+				<h2>{{ form.title }}</h2>
+			</div>
+			<div class = "col-sm-3"><h2><input type = "submit" value = "Create Task" class = "btn btn-primary"></h2>
+			</div>
+		
+	</form>
 	
-
-	<div class = 'row'>
-		<div class = 'col-sm-2'>
-			<input type = "submit" value = "Create Task" class = "btn btn-primary"></h2>	
+		<div class = "col-sm-2">
+			<h2><a href = "{% url 'checklist_create' %}" class = "btn btn-primary">Create a new checklist</a></h2>
 		</div>
-
 	</div>
-	
-	</div>
-
-</form>
 
 
 <br><br>
