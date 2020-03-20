@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Task, Title, Item
-from .forms import TaskForm, TitleForm
+from .forms import TaskForm, TitleForm, ItemForm
 from django.urls import reverse
 from django.contrib import messages
 from django.utils import timezone as tz
@@ -260,13 +260,40 @@ def create_checklist(request):
 
 
 def checklist_detail(request, pk):
+	context = {}
+	form = ItemForm()
 	title = Title.objects.get(id = pk)
 	items = title.item_set.all()
-	context = {}
+	
 	context['title'] = title
 	context['items'] = items
+	context['form'] = form
 	return render(request, "notes_app/checklist_detail.html", context)
 
 
 
+
+def create_checklist_item(request, pk_title):
+	if request.method == 'POST':
+		
+		try:
+			related_title = Title.objects.get(id = pk_title)
+			form = ItemForm(request.POST)
+			if form.is_valid():
+				f = form.save(commit = False)
+				f.title = related_title
+				f.save()
+
+				return redirect('checklist_detail', pk = pk_title)
+
+
+		except:
+			messages.warning(request, 'Unable to add item!')
+			return redirect(reverse('checklist_detail'))
+
+
+
+		
+
+		
 

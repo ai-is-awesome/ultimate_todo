@@ -23,3 +23,18 @@ class TitleForm(forms.ModelForm):
 	class Meta:
 		model = Title
 		fields = ['title']
+
+
+
+
+class ItemForm(forms.ModelForm):
+	text = forms.CharField(max_length = 100, label = 'Add Item')
+	class Meta:
+		model = Item
+		fields = ['text']
+
+
+
+
+
+

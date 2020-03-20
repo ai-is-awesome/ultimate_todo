@@ -1,8 +1,18 @@
+This tutorial begins where Tutorial 3 left off. We’re continuing the Web-poll application and will focus on form processing and cutting down our code.
+
 {% extends 'notes_app/base.html' %}
 
 
 
 {% block content %}
+
+
+
+<form method = 'POST' action = "{% url 'checklist_item_create' title.id %}">
+	{% csrf_token %}
+	{{ form }}
+	<input type = 'submit' class = 'btn btn-primary'/>
+</form>
 
 <div class = "well">
 	<h1>{{ title }}</h1>

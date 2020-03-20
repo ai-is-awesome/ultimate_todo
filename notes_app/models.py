@@ -59,6 +59,9 @@ class Item(models.Model):
 	title = models.ForeignKey(Title, on_delete = models.CASCADE)
 	text = models.CharField(max_length = 70)
 	complete = models.BooleanField(default = False)
+	created = models.DateTimeField(auto_now_add = True)
+	updated = models.DateTimeField(auto_now = True)
+
 
 	def __str__(self):
 		return self.text[:30]
