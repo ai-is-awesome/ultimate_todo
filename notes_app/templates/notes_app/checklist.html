@@ -20,8 +20,25 @@
 
 	{% for checklist_title in checklist_titles %}
 	<div class = "container">
-	<div class ="well">
-		<a href = "{% url 'checklist_detail' checklist_title.id %}">{{ checklist_title.title}}</a>
+	<div class ="well" id = "checklist-index-well">
+		<div class = "row">
+			<div class = "col-sm-4">
+				<a href = "{% url 'checklist_detail' checklist_title.id %}" id = "update_checklist_link">
+					<h2>{{ checklist_title.title}}</h2>
+				</a>
+			</div>
+			<div class = "col-sm-4">
+				<a href="{% url 'checklist_name_update' checklist_title.id %}">Edit Checklist Name</a>
+			</div>
+			<div class = "col-sm-4">
+				<a href = "" id = "delete_checklist_link">Delete Checklist</a>
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "col-sm-4">
+				Created : {{ checklist_title.created}}
+			</div>
+		</div>
 	</div>
 </div>
 {% endfor %}

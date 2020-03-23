@@ -1,3 +1,7 @@
+* {
+	font-family : verdana;
+
+}
 
 
 #task_complete {
@@ -53,8 +57,28 @@
 #go_to_checklists {
 	
 
-	font-size : 30px;
+	font-size : 20px;
 
 	
 
 }
+
+
+
+#checklist-index-well {
+
+	color : orange;
+	background-color : lightblue;
+
+
+
+
+
+
+}
+
+#delete_checklist_link {
+	color : red;
+
+}	
+

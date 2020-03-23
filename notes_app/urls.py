@@ -19,7 +19,7 @@ urlpatterns = [
 	path('checklist/title/<str:pk>', views.checklist_detail, name = "checklist_detail"), 
 	path('checklist/create', views.create_checklist, name = 'checklist_create'), 
 	path('checklist/<str:pk_title>/item/create', views.create_checklist_item, name = 'checklist_item_create'), 
-	
+	path('checklist/<str:pk_checklist>/update', views.update_checklist_name, name = 'checklist_name_update'), 
 
 
 

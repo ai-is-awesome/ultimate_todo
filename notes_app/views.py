@@ -7,10 +7,6 @@ from django.contrib import messages
 from django.utils import timezone as tz
 # Create your views here.
 
-
-
-
-
 def index(request):
 
 
@@ -30,7 +26,7 @@ def index(request):
 	else:
 		pass
 
- 
+
 
 	if request.method == 'POST':
 		form = TaskForm(request.POST)
@@ -141,10 +137,6 @@ def archive_task(request, pk):
 	except:
 		pass
 		
-
-	
-	
-
 	#If someone visits the archive_task view(ie doesn't click on the delete button but just visits the page) then
 	# show all the archive tasks to the user
 
@@ -173,9 +165,6 @@ def show_archives(request):
 
 	context["tasks"] =tasks
 	return render(request, 'notes_app/archive.html', context)
-
-
-
 
 
 
@@ -287,8 +276,6 @@ def checklist_detail(request, pk):
 	return render(request, "notes_app/checklist_detail.html", context)
 
 
-
-
 def create_checklist_item(request, pk_title):
 	if request.method == 'POST':
 		
@@ -309,7 +296,35 @@ def create_checklist_item(request, pk_title):
 
 
 
-		
 
-		
+def update_checklist_name(request, pk_checklist):
+	context = {}
+
+
+	if request.method == 'POST':
+		try:
+			checklist = Title.objects.get(id = pk_checklist)
+			form = TitleForm(request.POST, instance = checklist)
+			form.save()
+			messages.success(request, 'Name changed successfully')
+			return redirect(reverse('checklists'))
+
+		except:
+			messages.warning(request, 'Unable to change title')
+			return redirect(reverse('checklists'))
+
+
+
+	else:
+	
+		checklist = Title.objects.get(id = pk_checklist)
+		form = TitleForm(instance = checklist)
+		context['form'] = form
+		context['checklist'] = checklist
+		return render(request, 'notes_app/update_checklist_name.html', context)
+
+		# except:
+		# 	messages.warning(request, 'Unable to change title')
+		# 	return redirect(reverse('checklists'))
+
 
