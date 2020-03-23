@@ -31,7 +31,7 @@
 				<a href="{% url 'checklist_name_update' checklist_title.id %}">Edit Checklist Name</a>
 			</div>
 			<div class = "col-sm-4">
-				<a href = "" id = "delete_checklist_link">Delete Checklist</a>
+				<a href = "{% url 'checklist_delete' checklist_title.id %}" id = "delete_checklist_link">Delete Checklist</a>
 			</div>
 		</div>
 		<div class = "row">

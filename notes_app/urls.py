@@ -20,6 +20,7 @@ urlpatterns = [
 	path('checklist/create', views.create_checklist, name = 'checklist_create'), 
 	path('checklist/<str:pk_title>/item/create', views.create_checklist_item, name = 'checklist_item_create'), 
 	path('checklist/<str:pk_checklist>/update', views.update_checklist_name, name = 'checklist_name_update'), 
+	path('checklist/<str:pk_checklist>/delete', views.delete_checklist, name = 'checklist_delete')
 
 
 

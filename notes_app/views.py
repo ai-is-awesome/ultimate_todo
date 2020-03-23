@@ -55,13 +55,6 @@ def index(request):
 
 
 
-
-
-
-
-
-
-
 def update(request, pk):
 	context = {}
 
@@ -326,5 +319,23 @@ def update_checklist_name(request, pk_checklist):
 		# except:
 		# 	messages.warning(request, 'Unable to change title')
 		# 	return redirect(reverse('checklists'))
+
+
+def delete_checklist(request, pk_checklist):
+	'''
+	Takes the primary key of checklist and deletes the checklist if the request is sent by the orignal
+	author of the checklist. Otherwise, doesn't do anything and redirects to checklists url(listview)
+	'''
+	try:
+		checklist = Title.objects.get(id = pk_checklist)
+		title = checklist.title
+		checklist.delete()
+		messages.warning(request, 'Checklist "%s" deleted. ' % (title))
+		return redirect(reverse('checklists'))
+
+	except:
+		messages.warning(request, 'Unable to delete the Checklist')
+		return redirect(reverse('checklists'))
+
 
 
