@@ -7,21 +7,50 @@
 
 
 
-<form method = 'POST' action = "{% url 'checklist_item_create' title.id %}">
-	{% csrf_token %}
-	{{ form }}
-	<input type = 'submit' class = 'btn btn-primary'/>
-</form>
 
 <div class = "well">
 	<h1>{{ title }}</h1>
 </div>
 
+<br>
+
+<div class = "container">
+<form method = 'POST' action = "{% url 'checklist_item_create' title.id %}" autocomplete="off">
+	{% csrf_token %}
+	{{ form }}
+	<input type = 'submit' class = 'btn btn-primary'/>
+</form>
+</div>
+
+<br><br>
 
 {% for item in items %}
-<div class = "well" style = "text-align: center">
-	{{ item.text }}
+<div class = "container">
+	<div class = "well" style = "text-align: center">
+		<div class = "row">
+			<div class = "col-sm-3">
+				{{ item.text }}
+			</div>
+
+			<div class = 'col-sm-3'>
+				Tick off
+			</div>
+
+			<div class = "col-sm-3">Edit Item
+			</div>
+
+			<div class = "col-sm-3">Delete Item
+				
+			</div>
+
+
+			</div>
+		</div>
+
+		
+	</div>
 </div>
+
 {% endfor %}
 
 

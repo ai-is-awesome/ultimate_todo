@@ -6,6 +6,7 @@
 <div class = "jumbotron">
 	<h1>Checklists</h1>
 </div>
+
 <div class = "container">
 <form action = "{% url 'checklists' %}" method = "POST" autocomplete="off">
 	{% csrf_token %}
@@ -15,6 +16,8 @@
 	<input type = "submit" value = "Create a New Checklist" class = "btn btn-primary"/>
 </form>
 </div>
+
+
 
 <br><br>
 
@@ -42,6 +45,7 @@
 	</div>
 </div>
 {% endfor %}
+
 
 
 
