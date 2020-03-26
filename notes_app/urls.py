@@ -16,11 +16,14 @@ urlpatterns = [
 	path('archives/delete/<str:pk>', views.delete_archive, name = "delete_archive"), 
 	path('update_complete_field/<str:pk>', views.update_complete_field, name = "update_complete_field"), 
 	path('checklist/', views.checklists_view, name = "checklists"), 
-	path('checklist/title/<str:pk>', views.checklist_detail, name = "checklist_detail"), 
+	path('checklist/<str:pk>', views.checklist_detail, name = "checklist_detail"), 
 	path('checklist/create', views.create_checklist, name = 'checklist_create'), 
 	path('checklist/<str:pk_title>/item/create', views.create_checklist_item, name = 'checklist_item_create'), 
 	path('checklist/<str:pk_checklist>/update', views.update_checklist_name, name = 'checklist_name_update'), 
-	path('checklist/<str:pk_checklist>/delete', views.delete_checklist, name = 'checklist_delete')
+	path('checklist/<str:pk_checklist>/delete', views.delete_checklist, name = 'checklist_delete'), 
+	path('checklist/<str:pk_checklist>/item/<str:pk_item>/delete', views.delete_checklist_item, name = 'checklist_item_delete'), 
+	path('checklist/<str:pk_checklist>/item/<str:pk_item>/update',views.update_checklist_item , name = 'checklist_item_update'), 
+	path('checklist/<str:pk_checklist>/item/<pk_item>/update_complete_field', views.update_complete_field_item, name = 'update_complete_field_item'), 
 
 
 

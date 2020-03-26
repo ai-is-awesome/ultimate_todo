@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Task, Title, Item
 from .forms import TaskForm, TitleForm, ItemForm
@@ -269,25 +269,6 @@ def checklist_detail(request, pk):
 	return render(request, "notes_app/checklist_detail.html", context)
 
 
-def create_checklist_item(request, pk_title):
-	if request.method == 'POST':
-		
-		try:
-			related_title = Title.objects.get(id = pk_title)
-			form = ItemForm(request.POST)
-			if form.is_valid():
-				f = form.save(commit = False)
-				f.title = related_title
-				f.save()
-
-				return redirect('checklist_detail', pk = pk_title)
-
-
-		except:
-			messages.warning(request, 'Unable to add item!')
-			return redirect(reverse('checklist_detail'))
-
-
 
 
 def update_checklist_name(request, pk_checklist):
@@ -336,6 +317,72 @@ def delete_checklist(request, pk_checklist):
 	except:
 		messages.warning(request, 'Unable to delete the Checklist')
 		return redirect(reverse('checklists'))
+
+
+
+
+def create_checklist_item(request, pk_title):
+	if request.method == 'POST':
+		
+		try:
+			related_title = Title.objects.get(id = pk_title)
+			form = ItemForm(request.POST)
+			if form.is_valid():
+				f = form.save(commit = False)
+				f.title = related_title
+				f.save()
+
+				return redirect('checklist_detail', pk = pk_title)
+
+
+		except:
+			messages.warning(request, 'Unable to add item!')
+			return redirect(reverse('checklist_detail'))
+
+
+
+def update_checklist_item(request, pk_checklist, pk_item):
+	context = {}
+	
+	if request.method == 'POST':
+		
+		item = Item.objects.get(id = pk_item)
+		form = ItemForm(request.POST, instance = item)
+		form.save()
+		messages.success(request, 'Item updated successfully')
+		return redirect('checklist_detail', pk = pk_checklist)
+
+	else:
+		checklist = Title.objects.get(id =pk_checklist)
+		item = Item.objects.get(id = pk_item)
+		form = ItemForm(instance = item)
+		context['form'] = form
+		context['checklist'] = checklist
+		context['item'] = item
+		return render(request, 'notes_app/item_update.html', context)
+		
+
+
+def update_complete_field_item(request,pk_checklist, pk_item):
+	item = get_object_or_404(Item, pk = pk_item)
+
+	item.complete = not item.complete
+	item.save()
+
+	return redirect('checklist_detail', pk = pk_checklist)
+
+
+
+
+def delete_checklist_item(request, pk_checklist, pk_item):
+
+	item = Item.objects.get(id = pk_item)
+	item_title = item.title
+	item.delete()
+	messages.warning(request, 'item "%s" deleted' % (item_title))
+	return redirect('checklist_detail', pk = pk_checklist)
+
+
 
 
 

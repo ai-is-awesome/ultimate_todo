@@ -1,0 +1,28 @@
+{% extends 'notes_app/base.html' %}
+
+{% block content %}
+
+
+<div class = "jumbotron">
+<h2>{{ checklist }}</h2>
+</div>
+
+
+<br><br><br><br>
+
+<div class = "container">
+
+	<div class = "well">
+<form action = "{% url 'checklist_item_update' checklist.id item.id %}" autocomplete="off" method = "POST">
+	{% csrf_token %}
+	{{ form }}
+	<input type = "submit" value = "Update" />
+
+</form>
+</div>
+</div>
+
+
+
+{% endblock content %}
+

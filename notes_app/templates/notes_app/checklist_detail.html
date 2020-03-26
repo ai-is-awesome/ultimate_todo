@@ -28,28 +28,38 @@
 <div class = "container">
 	<div class = "well" style = "text-align: center">
 		<div class = "row">
-			<div class = "col-sm-3">
-				{{ item.text }}
+			<div class = "col-sm-3" id = 'item_title'>
+				{% if item.complete %}
+					<strike>{{ item.text }}</strike>
+				{% else %}
+					{{ item.text}}
+				{% endif %}
+				
 			</div>
 
 			<div class = 'col-sm-3'>
-				Tick off
+				{% if item.complete %}
+				<a href="{% url 'update_complete_field_item' title.id item.id %}">Task Completed</a>
+				{% else %}
+				<a href="{% url 'update_complete_field_item' title.id item.id %}">Tick off</a>
+				{% endif %}
+				
 			</div>
 
-			<div class = "col-sm-3">Edit Item
+			<div class = "col-sm-3"><a href="{% url 'checklist_item_update' title.id item.id %}">Edit Item</a>
 			</div>
 
-			<div class = "col-sm-3">Delete Item
+			<div class = "col-sm-3"><a href="{% url 'checklist_item_delete' title.id item.id %}">Delete Item</a>
 				
 			</div>
 
 
-			</div>
 		</div>
+	</div>
 
 		
-	</div>
 </div>
+
 
 {% endfor %}
 
