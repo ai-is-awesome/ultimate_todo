@@ -5,6 +5,7 @@
 {% block content %}
 
 
+
 <div class = "jumbotron">
 	<h1>Ultimate notes app</h1>
 	
@@ -36,17 +37,16 @@
 
 <div class = "container" id = "form_container">
 	<div class = "row">
-	<form action = "{% url 'index' %}" method = "POST" autocomplete="off">
+		<form action = "{% url 'index' %}" method = "POST" autocomplete="off">
 		{% csrf_token %}
-		
 			<div class = "col-sm-4">
-
 				<h2>{{ form.title }}</h2>
 			</div>
-			<div class = "col-sm-3"><h2><input type = "submit" value = "Create Note" class = "btn btn-primary"></h2>
+			<div class = "col-sm-3">
+				<h2><input type = "submit" value = "Create Note" class = "btn btn-primary"></h2>
 			</div>
 		
-	</form>
+		</form>
 			</div>
 
 <br><br>
@@ -89,10 +89,6 @@
 
 			</div>
 				
-
-
-
-
 			<div class = "col-sm-3"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
 			<div class = "col-sm-3"><a href = "{% url 'task_archive' task.id %}" style = "color : red">Delete Task</a></div>
 			<br>
@@ -142,25 +138,6 @@
 </div>
 </div>
 
-
-
 {% endif %}
 
-
-
-
-
-
-
-
-
-
 {% endblock content %}
-
-
-
-
-
-
-
-
