@@ -36,18 +36,18 @@
 </div>
 
 <div class = "container" id = "form_container">
-	<div class = "row">
+	<div class="grid-container">
 		<form action = "{% url 'index' %}" method = "POST" autocomplete="off">
-		{% csrf_token %}
-			<div class = "col-sm-4">
+			{% csrf_token %}
+			<div class = "grid-item">
 				<h2>{{ form.title }}</h2>
 			</div>
-			<div class = "col-sm-3">
-				<h2><input type = "submit" value = "Create Note" class = "btn btn-primary"></h2>
+			<div class = "grid-item">
+					<input type = "submit" value = "Create Note" class = "btn btn-primary">
 			</div>
 		
 		</form>
-			</div>
+	</div>
 
 <br><br>
 
