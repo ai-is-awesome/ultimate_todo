@@ -12,22 +12,23 @@
 {% else %}
 
 
-
-<form action = "{% url 'login' %}" method = "POST">
-	<div class = "well">
+<div class = "well">
+<form action = "{% url 'login' %}" method = "POST" class = "login-form">
+	
 	{% csrf_token %}
 
 	{{ form.as_p }}
 
 	<input type = "submit" value = "Login" class = "btn btn-success">	
-	</div>
+	
 	
 	
 
 </form>
+<a href = "{% url 'register' %}" id = "no-account">Don't have an account? Sign up</a>
+</div>
 
-<br>	
-<a href = "{% url 'register' %}">Don't have an account? Sign up</a>
+
 
 
 {% endif %}
