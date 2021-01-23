@@ -4,5 +4,5 @@
 allows you to add multiple things. You can login with your email but verifying
 email is not necessary. 
 
-<a href = "http://online-todo.herokuapp.com/">Here's the live link</a>
+<a href = "http://online-todo.herokuapp.com/" target = "_new">Here's the live link</a>
 
