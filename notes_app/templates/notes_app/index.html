@@ -5,12 +5,13 @@
 {% block content %}
 
 
-
+{% if user.is_authenticated is not True %}
 <div class = "jumbotron">
 	<h1>Ultimate notes app</h1>
+	<h3><a href = "https://github.com/ai-is-awesome/ultimate_todo" target = "_blank">This project is open source</a></h3>
 	
 </div>
-
+{% endif %}
 
 <!-- Already loaded the messages in views! -->
 <!-- 
@@ -29,11 +30,10 @@
 
 
 {% if user.is_authenticated %}
-<div class = "container-fluid" id = "go_to_checklists">
-	<div class = "well">
+<div id = "go_to_checklists" style = "position: relative; right: -85%;">
 	<a href = "{% url 'checklists' %}">Go to Checklists</a>
-	</div>
 </div>
+
 
 <div class = "container" id = "form_container">
 	<div class="grid-container">
@@ -49,7 +49,7 @@
 		</form>
 	</div>
 
-<br><br>
+</div>
 
 
 
@@ -62,7 +62,7 @@
 				<div class = "col-sm-4"><a href = "{% url 'task_update' task.id %}"><h2><strike>{{ task.title }}</strike></h2></a>
 			Updated : {{ task.updated }}</div>
 
-				<div class = "col-sm-2"><a href = "{% url 'update_complete_field' task.id %}" class = "btn btn-primary">Completed</a></div>
+				<div class = "col-sm-2"><a href = "{% url 'update_complete_field' task.id %}" class = "btn btn-success">Completed</a></div>
 
 				<div class = "col-sm-3"> <a href = "{% url 'task_update' task.id %}">Update Task</a></div>
 				<div class = "col-sm-3"><a href = "{% url 'task_archive' task.id %}" style = "color : red">Delete Task</a></div>

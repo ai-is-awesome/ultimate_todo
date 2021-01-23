@@ -123,6 +123,7 @@
 
 .login-form {
 	text-align: center;
+
 }
 
 
@@ -130,4 +131,16 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 3%
+}
+
+
+a:hover {
+	cursor: pointer;
+}
+
+#form_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 3%;
 }
