@@ -8,3 +8,4 @@ email is not necessary.
 
 <h2>Some screenshots of the app</h2>
 
+![alt text](/screenshots/django.png)
