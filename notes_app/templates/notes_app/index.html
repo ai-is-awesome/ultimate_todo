@@ -30,26 +30,25 @@
 
 
 {% if user.is_authenticated %}
-<div id = "go_to_checklists" style = "position: relative; right: -85%;">
-	<a href = "{% url 'checklists' %}">Go to Checklists</a>
+<!-- <div id = "go_to_checklists" style = "position: absolute; right: 10%;"> -->
+<div id = "got_to_checklists" style = "display: flex;">
+	<a href = "{% url 'checklists' %}" style = "margin-left: auto; padding-right: 3%">Go to Checklists</a>
 </div>
 
 
-<div class = "container" id = "form_container">
-	<div class="grid-container">
-		<form action = "{% url 'index' %}" method = "POST" autocomplete="off">
-			{% csrf_token %}
-			<div class = "grid-item">
-				<h2>{{ form.title }}</h2>
-			</div>
-			<div class = "grid-item">
-					<input type = "submit" value = "Create Note" class = "btn btn-primary">
-			</div>
-		
-		</form>
-	</div>
 
-</div>
+
+<form action = "{% url 'index' %}" method = "POST" autocomplete="off" class = "form-container">
+	{% csrf_token %}
+	<h2>{{ form.title }}
+	</h2>
+	<input type = "submit" value = "Create Note" class = "btn btn-primary" style = "height: 50px; position: relative; text-align: center; top: 12px;">
+	
+	
+</form>
+
+
+
 
 
 

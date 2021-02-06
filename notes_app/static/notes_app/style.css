@@ -4,6 +4,7 @@
 }
 
 
+
 #task_complete {
 	background-color : lavender;
 	font-family : verdana;
@@ -138,9 +139,14 @@ a:hover {
 	cursor: pointer;
 }
 
-#form_container {
+.form-container {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	margin-bottom: 3%;
 }
+
+
+.form-container > * {
+	padding-right: 2%
+}
+

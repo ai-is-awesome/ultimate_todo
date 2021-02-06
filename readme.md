@@ -6,3 +6,5 @@ email is not necessary.
 
 <a href = "http://online-todo.herokuapp.com/" target = "_new">Here's the live link</a>
 
+<h2>Some screenshots of the app</h2>
+
